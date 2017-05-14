@@ -20,32 +20,6 @@ $( document ).ready(function () {
     "pretzelsticks/mini": 0
   };
 
-  // function readURL( input ) {
-  //   // console.log( 'readURL' );
-
-  //   if ( input.files && input.files[0] ) {
-  //     var reader = new FileReader();
-
-  //     reader.onload = function ( event ) {
-  //       $receipt.attr( 'src', event.target.result );
-
-  //       Tesseract.recognize( $receipt[0] )
-  //         .progress( function ( message ) { console.log( message ); } )
-  //         .catch( function ( err ) { console.error( err ); } )
-  //         .then( function ( result ) { console.log( result ); } )
-  //         .finally( function ( resultOrError ) { console.log(resultOrError ); } )
-  //       ;
-  //       // console.log( $receipt[0] );
-  //     }
-
-  //     reader.readAsDataURL( input.files[0] );
-  //   }
-  // }
-
-  // $file.on( 'change', function () {
-  //   readURL( this );
-  // } );
-
   function getExpiration( food ) {
     var expiration = expirations[ food.toLowerCase().replace( /\s/, '-' ) ];
 
@@ -58,28 +32,52 @@ $( document ).ready(function () {
     return expiration;
   }
 
-  Tesseract.recognize( $receipt[0] )
-    .progress( function ( message ) { console.log( message ); } )
-    .catch( function ( err ) { console.error( err ); } )
-    .then( function ( result ) { console.log( result ); } )
-    .finally( function ( resultOrError ) {
-      console.log( resultOrError );
+  function ocr() {
+    Tesseract.recognize( $receipt[0] )
+      .progress( function ( message ) { console.log( message ); } )
+      .catch( function ( err ) { console.error( err ); } )
+      .then( function ( result ) { console.log( result ); } )
+      .finally( function ( resultOrError ) {
+        console.log( resultOrError );
 
-      var regex = /([^\n]+)\s+[0-9]+\.[0-9]{2}\sF3/g;
+        var regex = /([^\n]+)\s+[0-9]+\.[0-9]{2}\sF3/g;
 
-      var array = resultOrError.text.match( regex );
+        var array = resultOrError.text.match( regex );
 
-      var html = '';
+        var html = '';
 
-      console.log( 'array', array );
+        console.log( 'array', array );
 
-      array.forEach( function ( element ) {
-        var foodName = element.replace( regex, '$1' ).replace( /\sWE/, '' );
+        array.forEach( function ( element ) {
+          var foodName = element.replace( regex, '$1' ).replace( /\sWE/, '' );
 
-        html += '<li><span class="name">' + foodName + '</span><span class="expiration">' + getExpiration( foodName ) + '</span></li>';
-      } );
+          html += '<li><span class="name">' + foodName + '</span><span class="expiration">' + getExpiration( foodName ) + '</span></li>';
+        } );
 
-      $result.html( html );
-    } )
-  ;
+        $result.html( html );
+      } )
+    ;
+  }
+
+  function readURL( input ) {
+    // console.log( 'readURL' );
+
+    if ( input.files && input.files[0] ) {
+      var reader = new FileReader();
+
+      reader.onload = function ( event ) {
+        $receipt.attr( 'src', event.target.result );
+
+        $receipt.on( 'load', function ( event ) {
+          ocr();
+        } );
+      }
+
+      reader.readAsDataURL( input.files[0] );
+    }
+  }
+
+  $file.on( 'change', function () {
+    readURL( this );
+  } );
 } );
