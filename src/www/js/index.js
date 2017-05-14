@@ -29,7 +29,18 @@ var app = {
     onDeviceReady: function() {
         this.receivedEvent('deviceready');
 
-        alert( navigator.camera );
+        function successCallback() {
+            alert('success');
+        }
+
+        function errorCallback() {
+            alert('error');
+        }
+
+        // options = {}
+
+        // navigator.camera.getPicture(successCallback, errorCallback, options);
+        navigator.camera.getPicture(successCallback, errorCallback);
     },
 
     // Update DOM on a Received Event
