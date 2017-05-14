@@ -1,0 +1,107 @@
+body {
+  font-weight: lighter;
+  font-family: avenir;
+  color: white;
+  background-color: rgb(29,185,84);
+  margin: 0;
+}
+
+h1 {
+  text-align: center;
+}
+
+.upload-help {
+  font-weight: lighter;
+  text-align: center;
+}
+
+.upload {
+  background-color: white; /* Green */
+  border: none;
+  color: rgb(29,185,84);
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+  margin: 4px 2px;
+  border-top-style: dotted;
+  border-right-style: solid;
+  border-bottom-style: dotted;
+  border-left-style: solid;
+  cursor: pointer;
+}
+
+.upload-container { 
+  min-height: 50px;
+  /*padding: 35px 18px;*/
+  position: relative;
+  /*border: 3px solid white; */
+  /*border-top-style: dotted;
+  border-right-style: solid;
+  border-bottom-style: dotted;
+  border-left-style: solid;*/
+  text-align: center;
+}
+
+.receipt {
+  display: block;
+  max-width: 100%;
+  margin: 0 auto;
+  max-height: 500px;
+}
+
+.receipt[hidden] {
+  display: none !important;
+}
+
+.receipt-container {
+  position: relative;
+}
+
+.food {
+  list-style: none;
+  padding: 0;
+  color: white;
+  background-color: rgba(24,24,24,0.25);
+}
+
+.food > li {
+  padding: 1rem .5rem;
+  border-bottom: 1px solid rgba(240,240,240,0.25);
+}
+
+.food > li:last-child {
+  border-bottom: none;
+}
+
+.food-name {
+  font-weight: bold;
+}
+
+.food-name, .food-expiration {
+  display: block;
+}
+
+.container {
+  max-width: 90vw;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.loading-container {
+  margin-top: -270px;
+  margin-bottom: 130px;
+}
+
+.loading-text {
+  margin-top: -15px;
+}
+
+.loading {
+  max-width: 50%;
+}
+
+.loading-shield {
+  background-color: rgba(0,0,0,0.5);
+}

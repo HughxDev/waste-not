@@ -1,10 +1,11 @@
 $( document ).ready(function () {
   "use strict";
 
-  var $file = $('#file');
+  var $upload = $('#upload');
   var $receipt = $('#receipt');
   var $progress = $('#progress');
-  var $result = $('#result');
+  var $food = $('#food');
+  var $loading = $('#loading');
 
   var expirations = {
     "grape-tomatoes": 10,
@@ -40,6 +41,9 @@ $( document ).ready(function () {
       .finally( function ( resultOrError ) {
         console.log( resultOrError );
 
+        $loading.attr( 'hidden', '' );
+        $receipt.attr( 'hidden', '' );
+
         var regex = /([^\n]+)\s+[0-9]+\.[0-9]{2}\sF3/g;
 
         var array = resultOrError.text.match( regex );
@@ -51,10 +55,16 @@ $( document ).ready(function () {
         array.forEach( function ( element ) {
           var foodName = element.replace( regex, '$1' ).replace( /\sWE/, '' );
 
-          html += '<li><span class="name">' + foodName + '</span><span class="expiration">' + getExpiration( foodName ) + '</span></li>';
+          html += '<li><span class="food-name">'
+            + foodName
+            + '</span>'
+            + '<span class="food-expiration">'
+            + getExpiration( foodName )
+            + '</span></li>'
+          ;
         } );
 
-        $result.html( html );
+        $food.html( html );
       } )
     ;
   }
@@ -77,7 +87,8 @@ $( document ).ready(function () {
     }
   }
 
-  $file.on( 'change', function () {
+  $upload.on( 'change', function () {
+    $loading.attr( 'hidden', null );
     readURL( this );
   } );
 } );

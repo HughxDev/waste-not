@@ -5,31 +5,32 @@
   <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
   <script src='https://cdn.rawgit.com/naptha/tesseract.js/1.0.10/dist/tesseract.js'></script>
   <script src="functionality.js"></script>
-  <style>
-    .ocr_line {
-      display: block;
-    }
-
-    .name {
-      font-weight: bold;
-    }
-
-    .name, .expiration {
-      display: block;
-    }
-  </style>
+  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous"> -->
+  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 </head>
 <body>
-  <input id="file" type="file" name="file" />
-  <!-- <img src="receipt.jpg" id="receipt" /> -->
-  <img id="receipt" />
+  <div class="container">
+    <h1>Waste Not</h1>
 
-  <div id="progress"></div>
+    <p id="upload-help" class="upload-help">Upload your grocery receipt. We’ll scan your food items and let you know when they’re about to expire!</p>
 
-  <ul id="result"></ul>
+    <div class="upload-container">
+      <input id="upload" class="upload" name="upload" type="file" accept="image/gif, image/jpeg, image/png" aria-labelledby="upload-help" />
+      
+      <div class="receipt-container">
+        <img id="receipt" class="receipt" />
+        <div id="loading" class="loading-container" hidden="hidden">
+          <img class="loading" src="balls.svg" />
+          <p class="loading-text">Analyzing text…</p>
+        </div>
+      </div>
+      
+      <ul id="food" class="food"></ul>
+    </div>
 
-  <!-- <ul id="list">
-    <li></li>
-  </ul> -->
+    <!-- <div id="progress"></div> -->
+    
+  </div>
 </body>
 </html>
