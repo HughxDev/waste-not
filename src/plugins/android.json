@@ -18,7 +18,14 @@
         },
         "cordova-plugin-dialogs": {
             "PACKAGE_NAME": "com.flightofthenavigator.wastenot"
+        },
+        "cordova-plugin-camera": {
+            "PACKAGE_NAME": "com.flightofthenavigator.wastenot"
         }
     },
-    "dependent_plugins": {}
+    "dependent_plugins": {
+        "cordova-plugin-compat": {
+            "PACKAGE_NAME": "com.flightofthenavigator.wastenot"
+        }
+    }
 }
