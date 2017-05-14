@@ -89,6 +89,7 @@ $( document ).ready(function () {
 
   $upload.on( 'change', function () {
     $loading.attr( 'hidden', null );
+    $receipt.attr( 'hidden', null );
     readURL( this );
   } );
 } );
