@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Waste Not</title>
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src='https://cdn.rawgit.com/naptha/tesseract.js/1.0.10/dist/tesseract.js'></script>
+  <script src="functionality.js"></script>
+  <style>
+    .ocr_line {
+      display: block;
+    }
+
+    .name {
+      font-weight: bold;
+    }
+
+    .name, .expiration {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <!-- <input id="file" type="file" name="file" /> -->
+  <img src="receipt.jpg" id="receipt" />
+
+  <div id="progress"></div>
+
+  <ul id="result"></ul>
+
+  <!-- <ul id="list">
+    <li></li>
+  </ul> -->
+</body>
+</html>
