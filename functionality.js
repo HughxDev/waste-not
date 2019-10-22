@@ -10,19 +10,22 @@ $( document ).ready(function () {
   var expirations = {
     "grape-tomatoes": 10,
     "strawberries": 3,
-    "green-grapes": 0,
-    "red-delic-apples": 0,
-    "broccoli-crowns": 0,
-    "cauliflower": 0,
-    "iceburg-lettuce": 0,
-    "cucumbers": 0,
-    "banana": 0,
-    "restaur-tortilla": 0,
-    "pretzelsticks/mini": 0
+    "green-grapes": 7,
+    "red-delic-apples": 7,
+    "broccoli-crowns": 14,
+    "cauliflower": 21,
+    "iceburg-lettuce": 10,
+    "cucumbers": 10,
+    "banana": 5,
+    "restaur-tortilla": 7,
+    "pretzelsticks/mini": 14
   };
 
   function getExpiration( food ) {
-    var expiration = expirations[ food.toLowerCase().replace( /\s/, '-' ) ];
+    var key = food.toLowerCase().replace( /\s/g, '-' );
+    var expiration = expirations[ key ];
+
+    console.log( key );
 
     if ( typeof expiration == 'undefined' || expiration <= 0 ) {
       expiration = 'Not enough data';
